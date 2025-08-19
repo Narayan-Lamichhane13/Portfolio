@@ -107,9 +107,9 @@ function ScrubGradientName({ name }: { name: string }) {
         className="absolute inset-y-0 pointer-events-none"
         style={{ left: handlePos }}
       >
-        <div className="h-full w-0.5 bg-white/70 shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+        <div className="h-full w-0.5 bg-black" />
         <div className="absolute top-1/2 -translate-y-1/2 -left-3">
-          <div className="h-5 w-5 rounded-full bg-white shadow-[0_6px_18px_rgba(0,0,0,0.18)] border border-black/5" />
+          <div className="h-5 w-5 rounded-full bg-black border border-black" />
         </div>
       </div>
     </div>
@@ -155,7 +155,7 @@ export default function Home() {
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
@@ -167,7 +167,7 @@ export default function Home() {
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-[1.1]"
             >
@@ -177,7 +177,7 @@ export default function Home() {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
             >
@@ -188,7 +188,7 @@ export default function Home() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
@@ -209,7 +209,7 @@ export default function Home() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex justify-center space-x-6 mt-12"
             >
@@ -253,21 +253,18 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={aboutInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
-              <div className="relative">
-                <div className="w-80 h-80 mx-auto bg-gradient-to-br from-primary-400 to-purple-500 rounded-full flex items-center justify-center">
-                  <div className="w-72 h-72 bg-white rounded-full flex items-center justify-center shadow-2xl">
-                    <div className="w-64 h-64 rounded-full overflow-hidden relative">
+                <div className="relative">
+                  <div className="w-96 mx-auto bg-gradient-to-br from-primary-400 to-purple-500 p-2 rounded-xl shadow-2xl">
+                    <div className="relative w-full aspect-[3/4] bg-white rounded-lg overflow-hidden">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/assets/IMG_5412.jpeg`}
-                        alt="Horse Ride"
-                        width={256}
-                        height={256}
-                        className="w-64 h-64 object-cover object-[50%_2%]"
+                        alt="Profile"
+                        fill
+                        className="object-contain object-center"
                         priority
                       />
                     </div>
                   </div>
-                </div>
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg">
                   <Star className="w-8 h-8 text-white" />
                 </div>
