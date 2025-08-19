@@ -135,7 +135,7 @@ export default function Home() {
     { number: 'Top 10', label: 'SIGPwny CTF Ranking (94 teams)' },
     { number: '3+', label: 'Leadership Roles (PM & Lead Eng.)' },
     { number: '$2K+', label: 'Research Funding Secured' },
-    { number: '10+', label: 'AI & Security Projects Delivered' },
+    { number: '10+', label: 'Security Projects Delivered' },
   ]
 
   return (
@@ -262,7 +262,7 @@ export default function Home() {
                         alt="Horse Ride"
                         width={256}
                         height={256}
-                        className="w-64 h-64 object-cover"
+                        className="w-64 h-64 object-cover object-[50%_2%]"
                         priority
                       />
                     </div>
