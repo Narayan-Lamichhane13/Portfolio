@@ -213,10 +213,10 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex justify-center space-x-6 mt-12"
             >
-              <a href="https://github.com/naralami13" className="p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
+              <a href="https://github.com/Narayan-Lamichhane13" className="p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
                 <Github className="w-6 h-6 text-gray-700" />
               </a>
-              <a href="https://linkedin.com/in/naralami13" className="p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
+              <a href="https://www.linkedin.com/in/naralami13/" className="p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
                 <Linkedin className="w-6 h-6 text-gray-700" />
               </a>
             </motion.div>
