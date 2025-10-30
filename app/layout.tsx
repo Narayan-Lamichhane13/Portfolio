@@ -1,15 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import MouseTrail from '@/components/MouseTrail'
+import Navigation from '@/components/Navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Your Name - Cybersecurity Professional & Developer',
-  description: 'Professional portfolio showcasing cybersecurity research, software development projects, and technical expertise.',
-  keywords: ['cybersecurity', 'software development', 'portfolio', 'security researcher', 'developer'],
-  authors: [{ name: 'Your Name' }],
+  title: 'Narayan Lamichhane | Portfolio',
+  description: 'Product Management & Cybersecurity Enthusiast',
 }
 
 export default function RootLayout({
@@ -18,11 +16,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
-        <MouseTrail />
-        {children}
+    <html lang="en">
+      <body className={inter.className}>
+        <Navigation />
+        <main className="min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   )
 }
+
