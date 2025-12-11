@@ -20,7 +20,7 @@ export default function AboutMe() {
             transition={{ duration: 0.5 }}
             className="text-5xl md:text-7xl font-bold mb-6"
           >
-            Hi, I'm <span className="gradient-text">Narayan Lamichhane</span>
+            Hi, I&apos;m <span className="gradient-text">Narayan Lamichhane</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -46,20 +46,20 @@ export default function AboutMe() {
             >
               <Github className="w-6 h-6 text-gray-300" />
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-zinc-900 rounded-full border border-zinc-800 hover:border-blue-500 transition-all hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
-            >
-              <Linkedin className="w-6 h-6 text-gray-300" />
-            </a>
-            <a
-              href="mailto:your.email@example.com"
-              className="p-3 bg-zinc-900 rounded-full border border-zinc-800 hover:border-pink-500 transition-all hover:scale-110 hover:shadow-lg hover:shadow-pink-500/20"
-            >
-              <Mail className="w-6 h-6 text-gray-300" />
-            </a>
+              <a
+                href="https://www.linkedin.com/in/naralami13/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-zinc-900 rounded-full border border-zinc-800 hover:border-blue-500 transition-all hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
+              >
+                <Linkedin className="w-6 h-6 text-gray-300" />
+              </a>
+              <a
+                href="mailto:nara.lami13@gmail.com"
+                className="p-3 bg-zinc-900 rounded-full border border-zinc-800 hover:border-pink-500 transition-all hover:scale-110 hover:shadow-lg hover:shadow-pink-500/20"
+              >
+                <Mail className="w-6 h-6 text-gray-300" />
+              </a>
           </motion.div>
         </motion.div>
 
@@ -123,9 +123,9 @@ export default function AboutMe() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10"></div>
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Let's Connect!</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Let&apos;s Connect!</h2>
             <p className="text-lg md:text-xl text-gray-400 mb-6">
-              I'm always interested in discussing new opportunities, projects, or ideas in product management and cybersecurity.
+              I&apos;m always interested in discussing new opportunities, projects, or ideas in product management and cybersecurity.
             </p>
             <div className="flex flex-wrap gap-4">
               <a

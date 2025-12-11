@@ -76,7 +76,7 @@ export default function AppSecurityLab() {
             
             <div className="mb-6">
               <p className="text-gray-300 mb-2"><strong>Find buffer size & offset</strong></p>
-              <p className="text-gray-400 mb-3">In <code className="text-purple-400">vulnerable()</code> you'll see something like:</p>
+              <p className="text-gray-400 mb-3">In <code className="text-purple-400">vulnerable()</code> you&apos;ll see something like:</p>
               <CodeBlock code="sub $0x64, %esp  → buf = 0x64 = 100 bytes" />
               <p className="text-gray-400 mt-2">Offset to RET = buf size (100) + saved EBP (4) = 104.</p>
             </div>
@@ -99,9 +99,9 @@ export default function AppSecurityLab() {
             </div>
 
             {/* Safer Copy Bug */}
-            <h3 className="text-2xl font-bold text-white mt-8 mb-4">2) "Safer copy" bug + indirect write</h3>
+            <h3 className="text-2xl font-bold text-white mt-8 mb-4">2) &quot;Safer copy&quot; bug + indirect write</h3>
             <p className="text-gray-300 mb-4">
-              <strong>Concept:</strong> Even "safer" functions can be dangerous if used incorrectly (e.g., copying <code className="text-purple-400">sizeof(buf) + k</code>). Combine that with an accidental write (<code className="text-purple-400">*p = a</code>) to redirect control indirectly.
+              <strong>Concept:</strong> Even &quot;safer&quot; functions can be dangerous if used incorrectly (e.g., copying <code className="text-purple-400">sizeof(buf) + k</code>). Combine that with an accidental write (<code className="text-purple-400">*p = a</code>) to redirect control indirectly.
             </p>
 
             <h4 className="text-xl font-semibold text-white mt-6 mb-3">Steps</h4>
@@ -154,22 +154,27 @@ export default function AppSecurityLab() {
             {/* DEP/NX Bypass */}
             <h3 className="text-2xl font-bold text-white mt-8 mb-4">4) DEP/NX Bypass: ret2libc or ret2syscall</h3>
             <p className="text-gray-300 mb-4">
-              <strong>Problem:</strong> With DEP/NX, the stack is non-executable, so injected shellcode won't run.
+              <strong>Problem:</strong> With DEP/NX, the stack is non-executable, so injected shellcode won&apos;t run.
             </p>
 
             <h4 className="text-xl font-semibold text-white mt-6 mb-3">4a) ret2libc (dynamic binaries)</h4>
             <p className="text-gray-300 mb-4">
-              <strong>Idea:</strong> Don't execute stack bytes—return into libc and call existing functions.
+              <strong>Idea:</strong> Don&apos;t execute stack bytes—return into libc and call existing functions.
             </p>
 
             <ul className="space-y-3 mb-6 text-gray-400">
               <li>Find offset (e.g., 104).</li>
-              <li>Addresses needed: <code className="text-purple-400">system</code>, <code className="text-purple-400">exit</code>, and <code className="text-purple-400">"/bin/sh"</code>.</li>
-              <li>If symbols available: <CodeBlock code='p system, find ... "/bin/sh"' inline /></li>
+              <li>
+                Addresses needed: <code className="text-purple-400">system</code>, <code className="text-purple-400">exit</code>, and{' '}
+                <code className="text-purple-400">&quot;/bin/sh&quot;</code>.
+              </li>
+              <li>
+                If symbols available: <CodeBlock code={'p system, find ... "/bin/sh"'} inline />
+              </li>
               <li>If stripped: libc base (from <code className="text-purple-400">info proc mappings</code>) + offsets → absolute addresses.</li>
             </ul>
 
-            <CodeBlock code='Payload: A*100 + B*4 + system + exit + "/bin/sh"' />
+            <CodeBlock code={'Payload: A*100 + B*4 + system + exit + "/bin/sh"'} />
 
             <p className="text-gray-400 mt-4">
               <strong>Variation:</strong> Use <code className="text-purple-400">exit@plt</code> from your binary via <code className="text-purple-400">objdump -d | grep @plt</code>.
@@ -177,12 +182,16 @@ export default function AppSecurityLab() {
 
             <h4 className="text-xl font-semibold text-white mt-8 mb-3">4b) ret2syscall (static binaries, no libc)</h4>
             <p className="text-gray-300 mb-4">
-              <strong>Idea:</strong> ROP to set registers and trigger <code className="text-purple-400">int 0x80</code> → <code className="text-purple-400">execve("/bin/sh",0,0)</code>.
+              <strong>Idea:</strong> ROP to set registers and trigger <code className="text-purple-400">int 0x80</code> →{' '}
+              <code className="text-purple-400">execve(&quot;/bin/sh&quot;,0,0)</code>.
             </p>
 
             <ul className="space-y-3 mb-6 text-gray-400">
               <li>Find gadgets (pop/pop/ret, int 0x80) with objdump.</li>
-              <li>Chain sets <code className="text-purple-400">eax=11</code> (execve), <code className="text-purple-400">ebx=addr("/bin/sh")</code>, <code className="text-purple-400">ecx=0</code>, <code className="text-purple-400">edx=0</code> → <code className="text-purple-400">int 0x80</code>.</li>
+              <li>
+                Chain sets <code className="text-purple-400">eax=11</code> (execve), <code className="text-purple-400">ebx=addr(&quot;/bin/sh&quot;)</code>,{' '}
+                <code className="text-purple-400">ecx=0</code>, <code className="text-purple-400">edx=0</code> → <code className="text-purple-400">int 0x80</code>.
+              </li>
             </ul>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 my-6">
@@ -237,7 +246,10 @@ export default function AppSecurityLab() {
           <Section title="Reliability & Hygiene">
             <ul className="space-y-3 text-gray-400">
               <li><strong className="text-white">NUL-safe bytes</strong> in argv/file payloads (avoid <code className="text-purple-400">\x00</code> in addresses when passing via argv).</li>
-              <li><strong className="text-white">Endianness:</strong> pack addresses little-endian (<code className="text-purple-400">"&lt;I"</code>).</li>
+              <li>
+                <strong className="text-white">Endianness:</strong> pack addresses little-endian (
+                <code className="text-purple-400">&quot;&lt;I&quot;</code>).
+              </li>
               <li><strong className="text-white">Repeatability:</strong> control ASLR in the lab (<code className="text-purple-400">set disable-randomization on</code>) while you learn; test with ASLR to understand real-world stability.</li>
               <li><strong className="text-white">Gating:</strong> Always verify where EIP lands (<code className="text-purple-400">x/i $eip</code>), and prove overwrite distance with controlled patterns before dropping full chains.</li>
             </ul>
