@@ -1,7 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Lock, AlertTriangle, Code, Terminal, Network } from 'lucide-react'
+import Link from 'next/link'
+import {
+  Shield,
+  Lock,
+  AlertTriangle,
+  Code,
+  Terminal,
+  Network,
+  Fingerprint,
+  Package,
+  FileWarning,
+  EyeOff,
+} from 'lucide-react'
 
 const blogPosts = [
   {
@@ -14,49 +26,94 @@ const blogPosts = [
     link: '/blog/app-security-lab',
   },
   {
-    title: 'Machine Learning in Cybersecurity',
-    excerpt: 'Exploring how neural networks can be used to detect phishing attempts and malicious URLs. A practical guide to building ML-powered security tools.',
-    date: 'Coming Soon',
-    category: 'AI Security',
-    icon: Shield,
-    color: 'from-blue-500 to-purple-500',
-    link: null,
-  },
-  {
-    title: 'Secure Coding Practices',
-    excerpt: 'Best practices for writing secure code and avoiding common vulnerabilities. Learn about OWASP Top 10 and how to protect your applications.',
-    date: 'Coming Soon',
-    category: 'Application Security',
-    icon: Code,
-    color: 'from-green-500 to-teal-500',
-    link: null,
-  },
-  {
-    title: 'Penetration Testing Fundamentals',
-    excerpt: 'An introduction to ethical hacking and penetration testing. Learn the methodology, tools, and mindset of security professionals.',
-    date: 'Coming Soon',
-    category: 'Pentesting',
-    icon: Terminal,
-    color: 'from-purple-500 to-pink-500',
-    link: null,
-  },
-  {
-    title: 'Zero Trust Architecture',
-    excerpt: 'Understanding the principles of Zero Trust security and how modern organizations are implementing it to protect their assets.',
-    date: 'Coming Soon',
-    category: 'Enterprise Security',
+    title: 'OWASP A01: Broken Access Control',
+    excerpt: 'How authorization bugs lead to IDOR, privilege escalation, and data exposure — and how to enforce access checks consistently.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
     icon: Lock,
-    color: 'from-yellow-500 to-red-500',
-    link: null,
+    color: 'from-indigo-500 to-purple-500',
+    link: '/blog/owasp-a01-broken-access-control',
   },
   {
-    title: 'Common Web Vulnerabilities',
-    excerpt: 'A comprehensive guide to identifying and mitigating common web application vulnerabilities like XSS, SQL injection, and CSRF.',
-    date: 'Coming Soon',
-    category: 'Web Security',
+    title: 'OWASP A02: Cryptographic Failures',
+    excerpt: 'Common encryption/key-management mistakes (plaintext secrets, weak modes, missing TLS) and secure patterns that prevent data leaks.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Shield,
+    color: 'from-cyan-500 to-blue-500',
+    link: '/blog/owasp-a02-cryptographic-failures',
+  },
+  {
+    title: 'OWASP A03: Injection (SQL/Command/LDAP)',
+    excerpt: 'Why unsafe string concatenation turns user input into executable queries/commands — plus defensive coding with parameterization.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Terminal,
+    color: 'from-rose-500 to-orange-500',
+    link: '/blog/owasp-a03-injection',
+  },
+  {
+    title: 'OWASP A04: Insecure Design',
+    excerpt: 'Security problems caused by missing threat modeling, weak business logic, and absent abuse-case handling — fixed at the design stage.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Network,
+    color: 'from-emerald-500 to-teal-500',
+    link: '/blog/owasp-a04-insecure-design',
+  },
+  {
+    title: 'OWASP A05: Security Misconfiguration',
+    excerpt: 'Default settings, verbose errors, open storage, and missing headers — and a checklist to harden production deployments.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: FileWarning,
+    color: 'from-yellow-500 to-orange-500',
+    link: '/blog/owasp-a05-security-misconfiguration',
+  },
+  {
+    title: 'OWASP A06: Vulnerable & Outdated Components',
+    excerpt: 'How dependency risk becomes application risk — and how SBOMs, scanners, and patching workflows reduce exposure.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Package,
+    color: 'from-slate-500 to-zinc-500',
+    link: '/blog/owasp-a06-vulnerable-outdated-components',
+  },
+  {
+    title: 'OWASP A07: Identification & Authentication Failures',
+    excerpt: 'Weak passwords, insecure sessions, and missing MFA controls — plus secure auth/session patterns for modern apps.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Fingerprint,
+    color: 'from-purple-500 to-pink-500',
+    link: '/blog/owasp-a07-authentication-failures',
+  },
+  {
+    title: 'OWASP A08: Software & Data Integrity Failures',
+    excerpt: 'Supply-chain risks, untrusted updates, and unsafe deserialization — mitigated with signatures, pinning, and verification.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: EyeOff,
+    color: 'from-fuchsia-500 to-purple-500',
+    link: '/blog/owasp-a08-integrity-failures',
+  },
+  {
+    title: 'OWASP A09: Security Logging & Monitoring Failures',
+    excerpt: 'When you can’t detect abuse, you can’t respond. What to log, how to alert, and how to build useful audit trails.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
     icon: AlertTriangle,
-    color: 'from-orange-500 to-red-500',
-    link: null,
+    color: 'from-red-500 to-pink-500',
+    link: '/blog/owasp-a09-logging-monitoring-failures',
+  },
+  {
+    title: 'OWASP A10: Server-Side Request Forgery (SSRF)',
+    excerpt: 'How URL-fetching features can be abused to access internal services — and how to lock down egress safely.',
+    date: 'OWASP Top 10',
+    category: 'OWASP Top 10',
+    icon: Network,
+    color: 'from-blue-500 to-cyan-500',
+    link: '/blog/owasp-a10-ssrf',
   },
 ]
 
@@ -90,9 +147,6 @@ export default function Blog() {
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => {
-            const ContentWrapper = post.link ? 'a' : 'div'
-            const wrapperProps = post.link ? { href: post.link } : {}
-            
             return (
             <motion.article
               key={post.title}
@@ -100,10 +154,37 @@ export default function Blog() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * (index + 1), duration: 0.5 }}
             >
-              <ContentWrapper 
-                {...wrapperProps}
-                className="block bg-zinc-900 rounded-2xl overflow-hidden card-hover cursor-pointer h-full"
-              >
+              {post.link ? (
+                <Link
+                  href={post.link}
+                  className="block bg-zinc-900 rounded-2xl overflow-hidden card-hover cursor-pointer h-full"
+                >
+                  {/* Post Header with Gradient */}
+                  <div className={`bg-gradient-to-r ${post.color} p-6 text-white`}>
+                    <post.icon className="w-10 h-10 mb-3" />
+                    <span className="text-sm font-semibold opacity-90">{post.category}</span>
+                  </div>
+
+                  {/* Post Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-3 text-white">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-400 mb-4 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500 font-medium">
+                        {post.date}
+                      </span>
+                      <span className="text-sm text-purple-400 font-semibold">
+                        Read Article →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div className="block bg-zinc-900 rounded-2xl overflow-hidden card-hover cursor-pointer h-full">
               {/* Post Header with Gradient */}
               <div className={`bg-gradient-to-r ${post.color} p-6 text-white`}>
                 <post.icon className="w-10 h-10 mb-3" />
@@ -123,11 +204,12 @@ export default function Blog() {
                     {post.date}
                   </span>
                   <span className="text-sm text-purple-400 font-semibold">
-                    {post.link ? 'Read Article →' : 'Coming Soon'}
+                    Coming Soon
                   </span>
                 </div>
               </div>
-              </ContentWrapper>
+                </div>
+              )}
             </motion.article>
           )})}
         </div>
