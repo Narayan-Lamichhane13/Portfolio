@@ -110,7 +110,7 @@ export default function AboutMe() {
               Currently studying at the <strong className="text-white">University of Illinois at Urbana-Champaign (UIUC)</strong>
             </p>
             <p className="text-gray-500 mt-2 font-semibold">
-              Graduation: May 2026
+              Graduation: December 2026
             </p>
           </motion.div>
         </div>
