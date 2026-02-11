@@ -143,12 +143,28 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: 'SIGPwny',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for SIGPwny experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'CTF Competitor',
+    description: (
+      <>
+        <p className="text-gray-400 leading-relaxed">
+          <strong className="text-white">SIGPwny Security 2025 CTF</strong> — 1st Place (Beginner&apos;s Bracket), 9th Place (Advanced Bracket)
+          <br />
+          <strong className="text-white">SIGPwny Security 2024 CTF</strong> — 10th Place out of 94 teams
+        </p>
+        <p className="text-gray-400 leading-relaxed mt-4">
+          Competitor for Capture the Flag (CTF) events, earning: 1st Place (Beginner&apos;s Bracket) and 9th Place (Advanced Bracket) in SIGPwny Fall 2025 CTF, and 10th Place (out of 94 teams) in Fall 2024 CTF.
+          <br />
+          – Gained hands-on experience with cryptography, OSINT techniques, and reverse engineering using Ghidra.
+        </p>
+      </>
+    ),
+    tags: ['CTF', 'Cryptography', 'OSINT', 'Reverse Engineering', 'Ghidra'],
     icon: Shield,
     color: 'from-red-500 to-orange-500',
+    image: {
+      src: `${basePath}/portfolio-photos/SIGPwny.jpg`,
+      alt: 'SIGPwny image',
+    },
   },
   {
     title: 'Airify',
