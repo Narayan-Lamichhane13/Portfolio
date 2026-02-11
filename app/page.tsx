@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Shield, TrendingUp, GraduationCap, Github, Linkedin, Mail } from 'lucide-react'
+import Link from 'next/link'
 
 export default function AboutMe() {
   return (
@@ -128,18 +129,18 @@ export default function AboutMe() {
               I&apos;m always interested in discussing new opportunities, projects, or ideas in product management and cybersecurity.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <Link
                 href="/projects"
                 className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
               >
                 View My Projects
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/blog"
                 className="px-6 py-3 bg-transparent border-2 border-zinc-700 text-white rounded-lg font-semibold hover:border-purple-500 hover:bg-purple-500/10 transition-all hover:scale-105"
               >
                 Read Security Blog
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>
