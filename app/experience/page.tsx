@@ -179,7 +179,7 @@ const experiences: ExperienceItem[] = [
     description: (
       <>
         <p className="text-gray-400 leading-relaxed">
-          As a Software Security Engineer Intern, I contributed to the full‑stack build (React Native mobile front‑end ↔ Flask REST API back‑end) and led efforts to identify and mitigate vulnerabilities against the OWASP Top 10—from robust authentication to secure data handling.
+          As a Software Security Engineer Intern, I contributed to the full‑stack build (React Native mobile front‑end ↔ Flask REST API back‑end) and led efforts to identify and mitigate vulnerabilities against the OWASP Top 10—from robust authentication to secure data handling.
         </p>
         <p className="text-gray-400 leading-relaxed mt-4">
           We demoed the platform to investors and mentors and got invaluable feedback on both the tech stack and the user impact.
