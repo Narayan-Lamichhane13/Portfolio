@@ -1,0 +1,21 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[185],{9057:function(e,t,n){"use strict";n.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,n(2898).Z)("Briefcase",[["rect",{width:"20",height:"14",x:"2",y:"7",rx:"2",ry:"2",key:"eto64e"}],["path",{d:"M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",key:"zwj3tp"}]])},8253:function(e,t,n){"use strict";n.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,n(2898).Z)("Building2",[["path",{d:"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z",key:"1b4qmf"}],["path",{d:"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2",key:"i71pzd"}],["path",{d:"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2",key:"10jefs"}],["path",{d:"M10 6h4",key:"1itunk"}],["path",{d:"M10 10h4",key:"tcdvrf"}],["path",{d:"M10 14h4",key:"kelpxr"}],["path",{d:"M10 18h4",key:"1ulq68"}]])},9036:function(e,t,n){"use strict";n.d(t,{Z:function(){return a}});/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let a=(0,n(2898).Z)("Shield",[["path",{d:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10",key:"1irkt0"}]])},8164:function(e,t,n){Promise.resolve().then(n.bind(n,2609)),Promise.resolve().then(n.t.bind(n,3445,23)),Promise.resolve().then(n.t.bind(n,2445,23))},2609:function(e,t,n){"use strict";n.r(t),n.d(t,{default:function(){return m}});var a=n(7437),i=n(1396),s=n.n(i),r=n(4033),l=n(732);/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */let c=(0,n(2898).Z)("Home",[["path",{d:"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"y5dka4"}],["polyline",{points:"9 22 9 12 15 12 15 22",key:"e2us08"}]]);var o=n(8253),h=n(9057),d=n(9036);let u="/Portfolio",f=[{name:"About",href:"/",icon:c},{name:"Experience",href:"/experience",icon:o.Z},{name:"Projects",href:"/projects",icon:h.Z},{name:"Security Blog",href:"/blog",icon:d.Z}];function m(){let e=(0,r.usePathname)(),t=u&&e.startsWith(u)?e.slice(u.length)||"/":e;return(0,a.jsx)("nav",{className:"fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800",children:(0,a.jsx)("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",children:(0,a.jsxs)("div",{className:"flex items-center justify-between h-16",children:[(0,a.jsxs)(s(),{href:"/",className:"flex items-center space-x-2",children:[(0,a.jsx)(l.E.div,{whileHover:{rotate:360},transition:{duration:.6},className:"w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center",children:(0,a.jsx)("span",{className:"text-white font-bold text-xl",children:"N"})}),(0,a.jsx)("span",{className:"font-bold text-xl hidden sm:block text-white",children:"Narayan Lamichhane"})]}),(0,a.jsx)("div",{className:"flex items-center space-x-1",children:f.map(e=>{let n=t===e.href,i=e.icon;return(0,a.jsxs)(s(),{href:e.href,className:"relative",children:[(0,a.jsxs)(l.E.div,{whileHover:{scale:1.05},whileTap:{scale:.95},className:"flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ".concat(n?"text-purple-400":"text-gray-400 hover:text-white"),children:[(0,a.jsx)(i,{className:"w-5 h-5"}),(0,a.jsx)("span",{className:"font-medium hidden sm:inline",children:e.name})]}),n&&(0,a.jsx)(l.E.div,{layoutId:"activeTab",className:"absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600",initial:!1,transition:{type:"spring",stiffness:500,damping:30}})]},e.name)})})]})})})}},2445:function(){},3445:function(e){e.exports={style:{fontFamily:"'__Inter_41aa3d', '__Inter_Fallback_41aa3d'",fontStyle:"normal"},className:"__className_41aa3d"}},4033:function(e,t,n){e.exports=n(5313)}},function(e){e.O(0,[206,396,971,938,744],function(){return e(e.s=8164)}),_N_E=e.O()}]);

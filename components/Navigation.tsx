@@ -3,16 +3,20 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Home, Briefcase, Shield } from 'lucide-react'
+import { Home, Briefcase, Shield, Building2 } from 'lucide-react'
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const navItems = [
   { name: 'About', href: '/', icon: Home },
+  { name: 'Experience', href: '/experience', icon: Building2 },
   { name: 'Projects', href: '/projects', icon: Briefcase },
   { name: 'Security Blog', href: '/blog', icon: Shield },
 ]
 
 export default function Navigation() {
   const pathname = usePathname()
+  const normalizedPath = basePath && pathname.startsWith(basePath) ? pathname.slice(basePath.length) || '/' : pathname
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800">
@@ -33,7 +37,7 @@ export default function Navigation() {
           {/* Navigation Links */}
           <div className="flex items-center space-x-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href
+              const isActive = normalizedPath === item.href
               const Icon = item.icon
               
               return (
