@@ -3,8 +3,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { Github, ExternalLink, Shield, Brain } from 'lucide-react'
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+import ReadMore from '@/components/ReadMore'
 
 type Project = {
   title: string
@@ -39,37 +38,6 @@ const projects: Project[] = [
     github: 'https://github.com/Narayan-Lamichhane13/NN_regression',
     icon: Brain,
     color: 'from-blue-500 to-purple-500',
-  },
-  {
-    title: 'Research in Adversarial Examples',
-    description: (
-      <>
-        <p className="text-gray-400 leading-relaxed">
-          In this research study, I explored how small, carefully-designed perturbations to images can cause a neural network to make incorrect predictions—an effect known as an adversarial example. I tested controlled noise added to images (including low-amplitude pixel perturbations) and observed how model confidence and top-1 predictions shifted as the perturbation strength increased. This helped demonstrate how modern computer vision models can be highly accurate on clean inputs, yet surprisingly sensitive to subtle input changes that are often imperceptible to humans.
-        </p>
-        <p className="text-gray-400 leading-relaxed mt-4">
-          Adversarial examples matter because they expose security and reliability risks in real-world AI systems (e.g., vision models used in automated inspection or safety-critical pipelines). Even when the perturbation is constrained (commonly measured with norms like \(L_\infty\) or \(L_2\)), the decision boundary learned by a model can be exploited. Robustness research often evaluates accuracy under attack, studies transferability across models, and uses defenses like adversarial training to improve stability under worst-case input shifts.
-        </p>
-
-        <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-400">
-          <li>
-            Led an undergraduate research team to analyze vulnerabilities in machine learning models, improving adversarial robustness by 15% through advanced training techniques.
-          </li>
-          <li>Secured $2000 in research funding by presenting project outcomes to stakeholders and writing compelling proposals.</li>
-        </ul>
-      </>
-    ),
-    tags: ['Adversarial ML', 'Computer Vision', 'AI Security', 'Robustness'],
-    icon: Brain,
-    color: 'from-emerald-500 to-teal-500',
-    image: {
-      src: `${basePath}/portfolio-photos/IMG_8150.webp`,
-      alt: 'Adversarial examples research project photo',
-    },
-    pdf: {
-      src: `${basePath}/portfolio-photos/Research%20Poster%20Final.pdf`,
-      label: 'View Research Poster (PDF)',
-    },
   },
 ]
 
@@ -112,7 +80,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 * (index + 1), duration: 0.6 }}
-              className="bg-zinc-900 rounded-2xl overflow-hidden card-hover"
+              className="bg-zinc-900 rounded-2xl overflow-hidden card-hover flex flex-col h-full"
             >
               {/* Project Header with Gradient */}
               <div className={`bg-gradient-to-r ${project.color} p-8 text-white`}>
@@ -121,7 +89,7 @@ export default function Projects() {
               </div>
 
               {/* Project Content */}
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-1">
                 {project.image && (
                   <div className="mb-6 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
                     <div className="aspect-[16/9] w-full">
@@ -135,13 +103,13 @@ export default function Projects() {
                   </div>
                 )}
 
-                <div className="mb-6 leading-relaxed">
+                <ReadMore collapsedHeight={190} className="mb-6 leading-relaxed">
                   {typeof project.description === 'string' ? (
                     <p className="text-gray-400">{project.description}</p>
                   ) : (
                     project.description
                   )}
-                </div>
+                </ReadMore>
 
                 {project.pdf && (
                   <div className="mb-6">
@@ -179,7 +147,7 @@ export default function Projects() {
 
                 {/* Links */}
                 {project.github && (
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"

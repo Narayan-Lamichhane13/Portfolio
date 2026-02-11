@@ -3,15 +3,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import {
-  Briefcase,
   Brain,
   Building2,
-  Plane,
   Shield,
   Users,
   Zap,
   ExternalLink,
+  Briefcase,
+  Plane,
 } from 'lucide-react'
+import ReadMore from '@/components/ReadMore'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
@@ -70,33 +71,75 @@ const experiences: ExperienceItem[] = [
     },
   },
 
-  // Placeholders — add photos/descriptions later
   {
     title: 'Tile',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for Tile experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'Founder | AirDrop for Windows — Chicago, IL (Nov 2025 – Present)',
+    description: (
+      <ul className="list-disc pl-6 space-y-2 text-gray-400">
+        <li>
+          Founder-led project to develop a cross-platform file transfer application using TCP-based networking concepts via direct HTTP streaming over local networks, enabling seamless peer-to-peer file syncing between iOS and Windows devices.
+        </li>
+        <li>
+          Integrated AI agents and LLM-powered copilot to automate file organization, eliminating manual sorting across folders.
+        </li>
+        <li>
+          Went through the full Product Management life cycle process by defining core user workflows and running an early MVP pilot with 20+ students to gather usability feedback to create updates.
+        </li>
+      </ul>
+    ),
+    tags: ['Product', 'Networking', 'Windows', 'iOS', 'LLMs'],
     icon: Building2,
     color: 'from-blue-500 to-purple-500',
+    image: {
+      src: `${basePath}/portfolio-photos/Tile.png`,
+      alt: 'Tile project image',
+    },
   },
   {
     title: '3Sharp',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for 3Sharp experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'Product Management Intern — Seattle, WA (Jun 2025 – Aug 2025)',
+    description: (
+      <ul className="list-disc pl-6 space-y-2 text-gray-400">
+        <li>
+          Collaborated cross-functionally with 3Sharp and Microsoft engineers to build 15+ interactive showcase systems for B2B customers from scratch—later published on Microsoft.com during a period of low staffing.
+        </li>
+        <li>
+          Resolved 20+ UI/UX issues by applying analytical and product management concepts to logistics data in Power BI, leveraging project management methodologies to drive optimization and secure an additional $5K in project budget.
+        </li>
+      </ul>
+    ),
+    tags: ['Product', 'Microsoft', 'Power BI', 'UI/UX'],
     icon: Briefcase,
     color: 'from-purple-500 to-pink-500',
+    links: [
+      {
+        href: 'https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/',
+        label: 'Check it out here',
+      },
+    ],
   },
   {
     title: 'MTC',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for MTC experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'Executive Board: Product Manager',
+    description: (
+      <ul className="list-disc pl-6 space-y-2 text-gray-400">
+        <li>
+          Managed a cross-functional team of 7 to build a real estate API that aggregates land data into a visualization dashboard; defined the product skeleton in Figma, drove project timelines, and executed full delivery for a stakeholder presentation in San Francisco.
+        </li>
+        <li>
+          Secured 3 client projects by pitching MTC’s mission, generating $300 in funding.
+        </li>
+      </ul>
+    ),
+    tags: ['Product', 'Figma', 'APIs', 'Dashboard'],
     icon: Users,
     color: 'from-orange-500 to-red-500',
+    links: [
+      {
+        href: 'https://lanward-dashboard-fresh.vercel.app/',
+        label: 'Check it out here',
+      },
+    ],
   },
   {
     title: 'SIGPwny',
@@ -109,21 +152,47 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: 'Airify',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for Airify experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'Co-Founder — NASA Space Apps Challenge — Chicago, IL (Sept 2025 – Nov 2025)',
+    description: (
+      <ul className="list-disc pl-6 space-y-2 text-gray-400">
+        <li>
+          Co-founded a student-led project building an air quality platform in Python, that integrates NASA satellite data with local pollution and weather datasets.
+        </li>
+        <li>
+          Conducted market analysis on 10+ studies and incorporated feedback from engineers at NASA, Google, and IBM to identify real-world applications for helping organizations assess pollution risk in real time.
+        </li>
+      </ul>
+    ),
+    tags: ['Python', 'NASA TEMPO', 'Data', 'Product'],
     icon: Plane,
     color: 'from-cyan-500 to-blue-500',
+    links: [
+      {
+        href: 'https://airifyaqi.vercel.app/',
+        label: 'Check it out here',
+      },
+    ],
   },
   {
     title: 'SafeFit',
-    subtitle: 'Experience (details coming soon)',
-    description:
-      'Placeholder for SafeFit experience. Add your description, impact, and technologies here once you share the details.',
-    tags: ['Coming Soon'],
+    subtitle: 'Software Security Engineer Intern',
+    description: (
+      <>
+        <p className="text-gray-400 leading-relaxed">
+          As a Software Security Engineer Intern, I contributed to the full‑stack build (React Native mobile front‑end ↔ Flask REST API back‑end) and led efforts to identify and mitigate vulnerabilities against the OWASP Top 10—from robust authentication to secure data handling.
+        </p>
+        <p className="text-gray-400 leading-relaxed mt-4">
+          We demoed the platform to investors and mentors and got invaluable feedback on both the tech stack and the user impact.
+        </p>
+      </>
+    ),
+    tags: ['Security', 'OWASP Top 10', 'React Native', 'Flask'],
     icon: Zap,
     color: 'from-yellow-500 to-orange-500',
+    image: {
+      src: `${basePath}/portfolio-photos/SafeFit.png`,
+      alt: 'SafeFit image',
+    },
   },
 ]
 
@@ -154,7 +223,7 @@ export default function Experience() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 * (index + 1), duration: 0.6 }}
-              className="bg-zinc-900 rounded-2xl overflow-hidden card-hover"
+              className="bg-zinc-900 rounded-2xl overflow-hidden card-hover flex flex-col h-full"
             >
               {/* Header */}
               <div className={`bg-gradient-to-r ${item.color} p-8 text-white`}>
@@ -164,7 +233,7 @@ export default function Experience() {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-1">
                 {item.image && (
                   <div className="mb-6 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
                     <div className="aspect-[16/9] w-full">
@@ -178,13 +247,13 @@ export default function Experience() {
                   </div>
                 )}
 
-                <div className="mb-6 leading-relaxed">
+                <ReadMore collapsedHeight={210} className="mb-6 leading-relaxed">
                   {typeof item.description === 'string' ? (
                     <p className="text-gray-400">{item.description}</p>
                   ) : (
                     item.description
                   )}
-                </div>
+                </ReadMore>
 
                 {item.pdf && (
                   <div className="mb-6">
@@ -218,7 +287,7 @@ export default function Experience() {
 
                 {/* Links (optional) */}
                 {item.links && item.links.length > 0 && (
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 mt-auto">
                     {item.links.map((l) => (
                       <a
                         key={l.href}
