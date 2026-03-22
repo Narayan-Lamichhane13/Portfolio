@@ -32,7 +32,7 @@ export default function ResumePage() {
             <span className="text-sm text-gray-400 font-medium">Resume</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            Recruiter-ready <span className="gradient-text">Resume</span>
+            <span className="gradient-text">Resume</span>
           </h1>
           <p className="text-lg text-gray-400 max-w-3xl">
             View the PDF inline, open it in a new tab, or download it in one click.
