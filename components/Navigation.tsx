@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Home, Briefcase, Shield, Building2 } from 'lucide-react'
+import { Home, Briefcase, Shield, Building2, FileText } from 'lucide-react'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
@@ -12,6 +12,7 @@ const navItems = [
   { name: 'Experience', href: '/experience', icon: Building2 },
   { name: 'Projects', href: '/projects', icon: Briefcase },
   { name: 'Security Blog', href: '/blog', icon: Shield },
+  { name: 'Resume', href: '/resume', icon: FileText },
 ]
 
 export default function Navigation() {
