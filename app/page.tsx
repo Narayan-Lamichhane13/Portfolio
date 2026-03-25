@@ -236,7 +236,7 @@ export default function Home() {
       className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url('${basePath}/images/hero.png')` }}
     >
-      <div className="fixed inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--hero-overlay)/0.75)] pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--hero-overlay)/0.4)] pointer-events-none z-0" />
 
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden flex items-start justify-center z-10">
@@ -290,11 +290,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scroll-only darkening for readable lower content */}
-      <div className="pointer-events-none absolute inset-x-0 top-[100vh] h-[42vh] z-[6] bg-gradient-to-b from-transparent via-[hsl(var(--hero-overlay)/0.78)] to-[hsl(var(--background))]" />
-
       {/* Content Sections */}
-      <div ref={sectionsRef} className="relative z-10 bg-[hsl(var(--background)/0.82)] backdrop-blur-[2px]">
+      <div ref={sectionsRef} className="relative z-10 bg-[hsl(var(--background)/0.88)] backdrop-blur-sm">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 py-24 sm:py-32 space-y-24">
 
           {/* About Cards */}
