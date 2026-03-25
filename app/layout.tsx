@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Narayan Lamichhane | Portfolio',
@@ -17,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="font-sans">
         <Navigation />
         <main className="min-h-screen">
           {children}
@@ -26,4 +23,3 @@ export default function RootLayout({
     </html>
   )
 }
-

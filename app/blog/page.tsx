@@ -1,12 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import {
   Shield,
   Lock,
   AlertTriangle,
-  Code,
   Terminal,
   Network,
   Fingerprint,
@@ -15,6 +14,8 @@ import {
   EyeOff,
 } from 'lucide-react'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 const blogPosts = [
   {
     title: 'Application Security Lab — From Native Exploits to Web Attacks',
@@ -22,7 +23,7 @@ const blogPosts = [
     date: 'Published',
     category: 'Application Security',
     icon: Shield,
-    color: 'from-red-500 to-orange-500',
+    color: 'hsl(0 70% 55%)',
     link: '/blog/app-security-lab',
   },
   {
@@ -31,16 +32,16 @@ const blogPosts = [
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Lock,
-    color: 'from-indigo-500 to-purple-500',
+    color: 'hsl(240 55% 55%)',
     link: '/blog/owasp-a01-broken-access-control',
   },
   {
     title: 'OWASP A02: Cryptographic Failures',
-    excerpt: 'Common encryption/key-management mistakes (plaintext secrets, weak modes, missing TLS) and secure patterns that prevent data leaks.',
+    excerpt: 'Common encryption/key-management mistakes and secure patterns that prevent data leaks.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Shield,
-    color: 'from-cyan-500 to-blue-500',
+    color: 'hsl(190 65% 50%)',
     link: '/blog/owasp-a02-cryptographic-failures',
   },
   {
@@ -49,25 +50,25 @@ const blogPosts = [
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Terminal,
-    color: 'from-rose-500 to-orange-500',
+    color: 'hsl(15 75% 55%)',
     link: '/blog/owasp-a03-injection',
   },
   {
     title: 'OWASP A04: Insecure Design',
-    excerpt: 'Security problems caused by missing threat modeling, weak business logic, and absent abuse-case handling — fixed at the design stage.',
+    excerpt: 'Security problems caused by missing threat modeling, weak business logic, and absent abuse-case handling.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Network,
-    color: 'from-emerald-500 to-teal-500',
+    color: 'hsl(var(--accent))',
     link: '/blog/owasp-a04-insecure-design',
   },
   {
     title: 'OWASP A05: Security Misconfiguration',
-    excerpt: 'Default settings, verbose errors, open storage, and missing headers — and a checklist to harden production deployments.',
+    excerpt: 'Default settings, verbose errors, open storage, and missing headers — and a checklist to harden production.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: FileWarning,
-    color: 'from-yellow-500 to-orange-500',
+    color: 'hsl(40 80% 50%)',
     link: '/blog/owasp-a05-security-misconfiguration',
   },
   {
@@ -76,34 +77,34 @@ const blogPosts = [
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Package,
-    color: 'from-slate-500 to-zinc-500',
+    color: 'hsl(220 10% 50%)',
     link: '/blog/owasp-a06-vulnerable-outdated-components',
   },
   {
     title: 'OWASP A07: Identification & Authentication Failures',
-    excerpt: 'Weak passwords, insecure sessions, and missing MFA controls — plus secure auth/session patterns for modern apps.',
+    excerpt: 'Weak passwords, insecure sessions, and missing MFA controls — plus secure auth/session patterns.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Fingerprint,
-    color: 'from-purple-500 to-pink-500',
+    color: 'hsl(280 55% 55%)',
     link: '/blog/owasp-a07-authentication-failures',
   },
   {
     title: 'OWASP A08: Software & Data Integrity Failures',
-    excerpt: 'Supply-chain risks, untrusted updates, and unsafe deserialization — mitigated with signatures, pinning, and verification.',
+    excerpt: 'Supply-chain risks, untrusted updates, and unsafe deserialization — mitigated with signatures and verification.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: EyeOff,
-    color: 'from-fuchsia-500 to-purple-500',
+    color: 'hsl(300 55% 50%)',
     link: '/blog/owasp-a08-integrity-failures',
   },
   {
     title: 'OWASP A09: Security Logging & Monitoring Failures',
-    excerpt: 'When you can’t detect abuse, you can’t respond. What to log, how to alert, and how to build useful audit trails.',
+    excerpt: 'When you can\'t detect abuse, you can\'t respond. What to log, how to alert, and how to build useful audit trails.',
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: AlertTriangle,
-    color: 'from-red-500 to-pink-500',
+    color: 'hsl(345 70% 55%)',
     link: '/blog/owasp-a09-logging-monitoring-failures',
   },
   {
@@ -112,135 +113,129 @@ const blogPosts = [
     date: 'OWASP Top 10',
     category: 'OWASP Top 10',
     icon: Network,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'hsl(200 70% 50%)',
     link: '/blog/owasp-a10-ssrf',
   },
 ]
 
 export default function Blog() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible')
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+    const elements = sectionRef.current?.querySelectorAll('.fade-up-element')
+    elements?.forEach((el, i) => {
+      ;(el as HTMLElement).style.transitionDelay = `${i * 60}ms`
+      observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="min-h-screen bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-28">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="inline-block p-4 bg-gradient-to-r from-red-500 to-purple-600 rounded-2xl mb-6"
-          >
-            <Shield className="w-12 h-12 text-white" />
-          </motion.div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Security <span className="gradient-text">Blog</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Insights, tutorials, and thoughts on cybersecurity, product security, and building secure systems
-          </p>
-        </motion.div>
+    <div
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url('${basePath}/images/hero.png')` }}
+    >
+      <div className="fixed inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay)/0.6)] via-[hsl(var(--hero-overlay)/0.8)] to-[hsl(var(--hero-overlay)/0.92)] pointer-events-none z-0" />
 
-        {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => {
-            return (
-            <motion.article
-              key={post.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (index + 1), duration: 0.5 }}
-            >
-              {post.link ? (
-                <Link
-                  href={post.link}
-                  className="block bg-zinc-900 rounded-2xl overflow-hidden card-hover cursor-pointer h-full"
-                >
-                  {/* Post Header with Gradient */}
-                  <div className={`bg-gradient-to-r ${post.color} p-6 text-white`}>
-                    <post.icon className="w-10 h-10 mb-3" />
-                    <span className="text-sm font-semibold opacity-90">{post.category}</span>
-                  </div>
+      <div ref={sectionRef} className="relative z-10">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 pt-28 pb-24 sm:pb-32">
 
-                  {/* Post Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-3 text-white">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-400 mb-4 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500 font-medium">
-                        {post.date}
-                      </span>
-                      <span className="text-sm text-purple-400 font-semibold">
-                        Read Article →
-                      </span>
+          {/* Header */}
+          <div className="text-center mb-16 fade-up-element">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-wide section-heading mb-4">
+              Security Blog
+            </h1>
+            <p className="text-base sm:text-lg font-sans max-w-3xl mx-auto" style={{ color: 'hsl(0 0% 100% / 0.55)' }}>
+              Insights, tutorials, and thoughts on cybersecurity, product security, and building secure systems
+            </p>
+          </div>
+
+          {/* Blog Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {blogPosts.map((post) => {
+              const Icon = post.icon
+              return (
+                <article key={post.title} className="fade-up-element">
+                  {post.link ? (
+                    <Link href={post.link} className="block content-card !p-0 overflow-hidden cursor-pointer h-full group">
+                      <div className="p-5 pb-3 flex items-center gap-3">
+                        <div className="p-2 rounded-sm" style={{ background: `${post.color}`, opacity: 0.9 }}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-xs uppercase tracking-[0.1em] font-sans font-medium" style={{ color: 'hsl(0 0% 100% / 0.45)' }}>
+                          {post.category}
+                        </span>
+                      </div>
+                      <div className="px-5 pb-5">
+                        <h3 className="text-base font-medium text-white mb-2 font-sans group-hover:text-accent transition-colors duration-200">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed mb-4 font-sans" style={{ color: 'hsl(0 0% 100% / 0.5)' }}>
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-sans" style={{ color: 'hsl(0 0% 100% / 0.35)' }}>
+                            {post.date}
+                          </span>
+                          <span className="text-xs font-medium font-sans" style={{ color: 'hsl(var(--accent))' }}>
+                            Read Article →
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="content-card !p-0 overflow-hidden h-full opacity-70">
+                      <div className="p-5 pb-3 flex items-center gap-3">
+                        <div className="p-2 rounded-sm" style={{ background: `${post.color}`, opacity: 0.9 }}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-xs uppercase tracking-[0.1em] font-sans font-medium" style={{ color: 'hsl(0 0% 100% / 0.35)' }}>
+                          {post.category}
+                        </span>
+                      </div>
+                      <div className="px-5 pb-5">
+                        <h3 className="text-base font-medium text-white mb-2 font-sans">{post.title}</h3>
+                        <p className="text-sm leading-relaxed mb-4 font-sans" style={{ color: 'hsl(0 0% 100% / 0.4)' }}>
+                          {post.excerpt}
+                        </p>
+                        <span className="text-xs font-sans" style={{ color: 'hsl(0 0% 100% / 0.3)' }}>Coming Soon</span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ) : (
-                <div className="block bg-zinc-900 rounded-2xl overflow-hidden card-hover cursor-pointer h-full">
-              {/* Post Header with Gradient */}
-              <div className={`bg-gradient-to-r ${post.color} p-6 text-white`}>
-                <post.icon className="w-10 h-10 mb-3" />
-                <span className="text-sm font-semibold opacity-90">{post.category}</span>
-              </div>
+                  )}
+                </article>
+              )
+            })}
+          </div>
 
-              {/* Post Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-white">
-                  {post.title}
-                </h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 font-medium">
-                    {post.date}
-                  </span>
-                  <span className="text-sm text-purple-400 font-semibold">
-                    Coming Soon
-                  </span>
-                </div>
-              </div>
-                </div>
-              )}
-            </motion.article>
-          )})}
-        </div>
-
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-20 bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10"></div>
-          <div className="text-center max-w-3xl mx-auto relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Stay Updated</h2>
-            <p className="text-lg text-gray-400 mb-8">
+          {/* Newsletter / CTA */}
+          <div className="fade-up-element content-card mt-16 text-center">
+            <h2 className="text-2xl sm:text-3xl font-light tracking-wide mb-4 section-heading">Stay Updated</h2>
+            <p className="text-sm sm:text-base font-sans mb-8 max-w-2xl mx-auto" style={{ color: 'hsl(0 0% 100% / 0.55)' }}>
               Blog posts coming soon! I&apos;ll be sharing insights on cybersecurity, vulnerability research, and secure product development.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-6 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white flex-1 max-w-md focus:outline-none focus:border-purple-500 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-sm text-sm text-white font-sans outline-none transition-colors duration-200"
+                style={{
+                  background: 'hsl(0 0% 100% / 0.06)',
+                  border: '1px solid hsl(0 0% 100% / 0.12)',
+                }}
               />
-              <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all hover:scale-105">
-                Subscribe
-              </button>
+              <button className="accent-btn text-sm">Subscribe</button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )
 }
-

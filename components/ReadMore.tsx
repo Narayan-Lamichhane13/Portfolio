@@ -16,7 +16,6 @@ export default function ReadMore({ children, collapsedHeight = 180, className }:
   const measure = React.useCallback(() => {
     const el = contentRef.current
     if (!el) return
-    // Compare actual scroll height to the collapsed constraint.
     setIsOverflowing(el.scrollHeight > collapsedHeight + 1)
   }, [collapsedHeight])
 
@@ -39,7 +38,10 @@ export default function ReadMore({ children, collapsedHeight = 180, className }:
         <div ref={contentRef}>{children}</div>
 
         {!isExpanded && isOverflowing && (
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-zinc-900 to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
+            style={{ background: 'linear-gradient(to top, hsl(0 0% 100% / 0.06), transparent)' }}
+          />
         )}
       </div>
 
@@ -47,7 +49,8 @@ export default function ReadMore({ children, collapsedHeight = 180, className }:
         <button
           type="button"
           onClick={() => setIsExpanded((v) => !v)}
-          className="mt-3 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+          className="mt-3 text-sm font-medium transition-colors duration-200 font-sans"
+          style={{ color: 'hsl(var(--accent))' }}
         >
           {isExpanded ? 'Show less' : 'Read more'}
         </button>
@@ -55,5 +58,3 @@ export default function ReadMore({ children, collapsedHeight = 180, className }:
     </div>
   )
 }
-
-
