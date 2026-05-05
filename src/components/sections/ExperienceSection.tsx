@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { EXPERIENCE } from '../../data/portfolio';
+import { asset } from '../../lib/asset';
 import { PerspectivePanel } from '../SceneFrame';
 
 export function ExperienceSection() {
@@ -14,7 +15,7 @@ export function ExperienceSection() {
             <div
               className="relative h-[220px] sm:h-[280px] lg:h-[320px] border-b border-white/5 bg-ink-900/60"
               style={{
-                backgroundImage: `url(${item.image})`,
+                backgroundImage: `url(${asset(item.image)})`,
                 backgroundSize: 'contain',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -99,7 +100,7 @@ export function ExperienceSection() {
                 )}
                 {item.pdf && (
                   <a
-                    href={item.pdf.href}
+                    href={asset(item.pdf.href)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-mist-200 hover:text-white transition-colors group"

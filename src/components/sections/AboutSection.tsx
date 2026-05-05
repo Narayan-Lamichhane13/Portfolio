@@ -1,4 +1,5 @@
 import { HOBBIES, PROFILE } from '../../data/portfolio';
+import { asset } from '../../lib/asset';
 import { PerspectivePanel } from '../SceneFrame';
 
 export function AboutSection() {
@@ -10,7 +11,7 @@ export function AboutSection() {
           style={{ height: 200 }}
         >
           <img
-            src={PROFILE.portrait}
+            src={asset(PROFILE.portrait)}
             alt={PROFILE.name}
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '32% 38%' }}
@@ -79,7 +80,7 @@ export function AboutSection() {
               <div
                 className="relative h-[120px] sm:h-[140px] bg-ink-900/60"
                 style={{
-                  backgroundImage: `url(${card.image})`,
+                  backgroundImage: `url(${asset(card.image)})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',

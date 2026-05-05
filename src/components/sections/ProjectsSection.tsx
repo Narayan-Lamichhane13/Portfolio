@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PROJECTS } from '../../data/portfolio';
+import { asset } from '../../lib/asset';
 import { PerspectivePanel } from '../SceneFrame';
 
 const STATUS_COLOR = {
@@ -125,7 +126,7 @@ export function ProjectsSection() {
                 <div
                   className="relative h-[240px] sm:h-[300px] lg:h-[340px] border-b border-white/5 bg-ink-900/60"
                   style={{
-                    backgroundImage: `url(${p.image})`,
+                    backgroundImage: `url(${asset(p.image)})`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',

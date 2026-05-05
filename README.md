@@ -96,5 +96,19 @@ and writes a compressed JPEG into `public/photos/`.
 
 ## Deploy
 
-The production build outputs to `dist/`. Vercel auto-detects Vite — no
-config is needed beyond pointing the project at this repo.
+This repo deploys to **GitHub Pages** automatically via the workflow at
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Every
+push to `main` triggers `npm run build` on Ubuntu and publishes the
+contents of `dist/` to Pages.
+
+To enable it (one-time):
+
+1. Repo → **Settings → Pages** → **Build and deployment → Source** =
+   *GitHub Actions*.
+2. Push to `main`. The workflow runs and the site comes up at
+   `https://narayan-lamichhane13.github.io/Portfolio/`.
+
+The Vite `base` is set to `/Portfolio/` for production builds (matching
+the GitHub Pages URL prefix); local dev still uses `/`. If this repo is
+ever renamed or moved to a custom domain, update the `base` in
+[`vite.config.ts`](vite.config.ts) to match.

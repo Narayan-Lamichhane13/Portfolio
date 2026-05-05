@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+// GitHub Pages serves this repo at https://<user>.github.io/Portfolio/, so
+// production builds need a non-root base path. Local dev keeps "/" so HMR,
+// links, and asset URLs all work as expected.
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/Portfolio/' : '/',
   plugins: [react()],
   server: {
     port: 5173,
@@ -17,4 +21,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
