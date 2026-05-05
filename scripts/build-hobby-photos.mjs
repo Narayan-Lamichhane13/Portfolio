@@ -3,7 +3,7 @@
 // Inputs:
 //   About me Photos/IMG_5557.HEIC  -> public/photos/cooking.jpg
 //   About me Photos/IMG_5345.HEIC  -> public/photos/photography.jpg
-//                                  -> public/photos/airify.jpg  (reused)
+//   About me Photos/IMG_6381.PNG   -> public/photos/airify.jpg
 //   <muay-thai source PNG>         -> public/photos/muay-thai.jpg
 //
 // We aim for ~1200px on the long edge and ~250 KB JPEGs so the page stays
@@ -49,8 +49,12 @@ const photoHeic = await heicToBuffer(
 );
 const photoJpg = await compress(photoHeic, { width: 1200, quality: 80 });
 await writeAtomic(path.join(PHOTOS, 'photography.jpg'), photoJpg);
-// Reuse the same shot for the Airify project card.
-await writeAtomic(path.join(PHOTOS, 'airify.jpg'), photoJpg);
+
+const airifyPng = await fs.readFile(
+  path.resolve('About me Photos/IMG_6381.PNG'),
+);
+const airifyJpg = await compress(airifyPng, { width: 1200, quality: 80 });
+await writeAtomic(path.join(PHOTOS, 'airify.jpg'), airifyJpg);
 
 // Muay Thai source: the user pasted this earlier in the chat; Cursor saved
 // it under .cursor/projects/.../assets/. Find any png in that folder and use it.
