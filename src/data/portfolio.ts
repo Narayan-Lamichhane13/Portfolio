@@ -84,15 +84,11 @@ export const EXPERIENCE: ExperienceItem[] = [
     company: 'Amazon · Agentic AI for AWS',
     period: 'Summer 2026 (incoming)',
     location: 'Seattle, WA',
-    bullets: [
-      'Joining the team building agentic AI capabilities for AWS.',
-      'Working on tooling that lets AI agents reason about, plan over, and operate on cloud infrastructure.',
-      'Focus areas: agent orchestration, observability, and developer experience.',
-    ],
+    bullets: ['Joining AWS to build Agentic AI for DevOps workflows.'],
     stack: ['AI Agents', 'AWS', 'Distributed Systems', 'TypeScript'],
   },
   {
-    role: 'Product Management Intern',
+    role: 'Product Management and Marketing Intern',
     company: '3Sharp',
     period: 'Jun 2025 — Aug 2025',
     location: 'Seattle, WA',
