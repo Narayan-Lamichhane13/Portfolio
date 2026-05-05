@@ -1,0 +1,31 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+*.local
+.env
+.env.local
+*.log
+.vite
+
+# editor / OS / agent metadata
+.vscode
+.idea
+Thumbs.db
+.cursor
+.claude
+.copilot
+.hive
+
+# build artefacts
+*.tsbuildinfo
+
+# scratch
+scripts/_preview/
+
+# raw photo sources — converted/compressed copies live under public/photos/
+About me Photos/
+public/photos/about-portrait-source.jpg
+
+# legacy snapshot from the previous Next.js portfolio — not needed at runtime
+portfolio-assets-snapshot/
