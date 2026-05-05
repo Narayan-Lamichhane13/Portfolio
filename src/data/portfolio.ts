@@ -103,6 +103,7 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Secured an additional $5K in project budget by surfacing impact metrics to stakeholders.',
     ],
     stack: ['Product', 'Microsoft', 'Azure', 'Power BI', 'UI/UX'],
+    image: '/photos/3sharp-microsoft.jpg',
     link: {
       href: 'https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/',
       label: 'Microsoft Partner showcase',
@@ -131,6 +132,7 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Secured $2,000 in research funding through a written proposal and stakeholder presentation.',
     ],
     stack: ['Adversarial ML', 'Computer Vision', 'AI Security'],
+    image: '/photos/portrait.webp',
     pdf: { href: '/photos/research-poster.pdf', label: 'Research poster (PDF)' },
   },
 ];
