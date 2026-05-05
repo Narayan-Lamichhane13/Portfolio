@@ -97,9 +97,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: 'Jun 2025 — Aug 2025',
     location: 'Seattle, WA',
     bullets: [
-      'Built the Azure HERO AI Demo software for Microsoft — published on Microsoft.com during a low-staffing window.',
+      'Built the Azure HERO AI Click by Click Simulation Demo for Microsoft.',
       'Shipped 15+ interactive B2B showcase systems with 3Sharp and Microsoft.',
-      'Resolved 20+ UI/UX issues across the showcase pipeline using PM workflows and Power BI dashboards.',
       'Secured an additional $5K in project budget by surfacing impact metrics to stakeholders.',
     ],
     stack: ['Product', 'Microsoft', 'Azure', 'Power BI', 'UI/UX'],
@@ -272,7 +271,7 @@ export const CONTACT_BLOCKS: ContactBlock[] = [
       },
       {
         label: '3Sharp · Microsoft',
-        value: 'Built the Azure HERO AI Demo software for Microsoft — published on Microsoft.com',
+        value: 'Built the Azure HERO AI Click by Click Simulation Demo for Microsoft',
       },
     ],
   },
